@@ -139,12 +139,91 @@
         .reference-section a:hover {
             color: #0d47a1;
         }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .menu-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 12px 15px;
+                position: relative;
+            }
+            
+            .header h1 {
+                font-size: 16px;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .menu-toggle {
+                display: flex;
+                position: absolute;
+                top: 12px;
+                right: 15px;
+            }
+            
+            .header .nav {
+                width: 100%;
+                display: none;
+            }
+            
+            .header .nav.active {
+                display: block;
+                margin-top: 10px;
+                padding-top: 10px;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+            }
+            
+            .header .nav ul {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .header .nav ul li a {
+                display: block;
+                padding: 10px 15px;
+                font-size: 15px;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Digest2小行星轨道分类评估工具</h1>
-        <div class="nav">
+        <div class="header-content">
+            <h1>Digest2小行星轨道分类评估工具</h1>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="nav" id="nav-menu">
             <ul>
                 <li><a href="/">类型评估</a></li>
                 <li><a href="/types">类型说明</a></li>
@@ -181,5 +260,11 @@
             </div>
         </div>
     </div>
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
