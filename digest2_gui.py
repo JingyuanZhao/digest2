@@ -450,7 +450,13 @@ class Digest2GUI:
         about_label = ttk.Label(content_frame, text="本软件由星空下的守望者基于Digest2源代码开发。Digest2源代码作者：Sonia Keys、Carl Hergenrother、Robert McNaught、David Asher，源代码中的ADES支持由 Richard Cloete 和 Peter Vereš添加。", 
                                font=('微软雅黑', 11), foreground='#333', style='Transparent.TLabel', 
                                wraplength=1150)
-        about_label.pack(anchor=tk.W, pady=(0, 15))
+        about_label.pack(anchor=tk.W, pady=(0, 10))
+        
+        # 添加声明信息
+        disclaimer_label = ttk.Label(content_frame, text="本软件由个人基于小行星中心（MPC）官方公开的Digest2源代码开发，非MPC官方项目。", 
+                               font=('微软雅黑', 10), foreground='#e65100', style='Transparent.TLabel', 
+                               wraplength=1150)
+        disclaimer_label.pack(anchor=tk.W, pady=(0, 15))
         
         # 添加版本信息
         import digest2

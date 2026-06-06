@@ -20,55 +20,18 @@
         .header {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             color: white;
-            padding: 12px 15px;
+            padding: 15px 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            position: relative;
-            z-index: 100;
-        }
-        
-        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
         }
         
         .header h1 {
-            font-size: 18px;
+            font-size: 24px;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             margin: 0;
-            flex: 1;
-            min-width: 0;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 6px;
-            transition: background-color 0.3s;
-            margin-left: 15px;
-            flex-shrink: 0;
-            background-color: rgba(255, 255, 255, 0.15);
-        }
-        
-        .menu-toggle:hover {
-            background-color: rgba(255, 255, 255, 0.25);
-        }
-        
-        .menu-toggle span {
-            width: 28px;
-            height: 4px;
-            background-color: white;
-            margin: 3px 0;
-            border-radius: 3px;
-            transition: all 0.3s;
         }
         
         .header .nav {
@@ -80,7 +43,7 @@
         .header .nav ul {
             list-style: none;
             display: flex;
-            gap: 15px;
+            gap: 30px;
             margin: 0;
             padding: 0;
         }
@@ -93,22 +56,19 @@
             text-decoration: none;
             color: rgba(255, 255, 255, 0.9);
             font-weight: 500;
-            padding: 8px 14px;
+            padding: 5px 10px;
             border-radius: 4px;
-            transition: all 0.3s;
-            font-size: 14px;
+            transition: background-color 0.3s;
         }
         
         .header .nav ul li a:hover {
-            background-color: rgba(76, 175, 80, 0.8);
+            background-color: #4CAF50;
             color: white;
-            transform: translateY(-1px);
         }
         
         .header .nav ul li a.active {
             background-color: #4CAF50;
             color: white;
-            box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
         }
         
         .container {
@@ -180,71 +140,87 @@
             color: #0d47a1;
         }
         
-        @media (max-width: 1024px) {
-            .header-content {
-                flex-wrap: nowrap;
+        .header {
+            padding-right: 55px;
+            position: relative;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header h1 {
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .menu-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 12px 15px;
+                position: relative;
             }
             
             .header h1 {
                 font-size: 16px;
-                flex: 1;
-                min-width: 0;
-                margin-right: 10px;
+                width: 100%;
+                margin-bottom: 10px;
             }
             
             .menu-toggle {
                 display: flex;
-                position: relative;
-                top: auto;
-                right: auto;
+                position: absolute;
+                top: 12px;
+                right: 15px;
             }
             
             .header .nav {
                 width: 100%;
                 display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             }
             
             .header .nav.active {
                 display: block;
-                margin-top: 0;
-                padding: 10px 0;
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                margin-top: 10px;
+                padding-top: 10px;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
             }
             
             .header .nav ul {
                 flex-direction: column;
-                gap: 5px;
-                padding: 0 15px;
+                gap: 8px;
             }
             
             .header .nav ul li a {
                 display: block;
-                padding: 14px 15px;
-                font-size: 17px;
-                text-align: left;
-                border-radius: 6px;
-            }
-            
-            .header .nav ul li a:hover,
-            .header .nav ul li a.active {
-                background-color: rgba(76, 175, 80, 0.9);
-                transform: none;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .header h1 {
-                font-size: 14px;
-            }
-            
-            .header .nav ul li a {
-                padding: 12px 15px;
-                font-size: 16px;
+                padding: 10px 15px;
+                font-size: 15px;
+                text-align: center;
             }
         }
     </style>
@@ -274,6 +250,9 @@
             <h2>关于</h2>
             <p>
                 本网站由<strong>星空下的守望者</strong>基于Digest2源代码开发。Digest2源代码作者：<strong>Sonia Keys、Carl Hergenrother、Robert McNaught、David Asher</strong>，源代码中的ADES支持由 <strong>Richard Cloete</strong> 和 <strong>Peter Vereš</strong>添加。
+            </p>
+            <p style="color: #e65100; font-weight: 500;">
+                本网站由个人基于小行星中心（MPC）官方公开的Digest2源代码开发，非MPC官方项目。
             </p>
             <p>
                 Digest2 版本：{{ digest2_version }}
