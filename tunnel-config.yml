@@ -1,0 +1,7 @@
+tunnel: asterorbit-tunnel
+credentials-file: ~/.cloudflared/credentials.json
+
+ingress:
+  - hostname: asterorbit.bbroot.com
+    service: http://localhost:5000
+  - service: http_status:404
