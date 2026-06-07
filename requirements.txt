@@ -2,4 +2,3 @@ flask==3.0.3
 gunicorn==22.0.0
 digest2==2.8.0
 python-docx==1.1.2
-lxml==5.2.2

@@ -5,7 +5,6 @@ import os
 import sys
 from flask import Flask, render_template, request, jsonify
 import tempfile
-from lxml import etree as ET
 
 # 尝试导入 digest2，如果失败则标记
 try:
