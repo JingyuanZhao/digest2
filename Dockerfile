@@ -15,6 +15,9 @@ RUN apt-get update && apt-get install -y \
     libc-dev \
     && rm -rf /var/lib/apt/lists/*
 
+# 设置 C 编译器标志以兼容 digest2 的旧代码
+ENV CFLAGS="-Wno-implicit-function-declaration -Wno-error=implicit-function-declaration"
+
 # 复制依赖文件
 COPY requirements.txt .
 
