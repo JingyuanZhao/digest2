@@ -408,17 +408,18 @@ class Digest2GUI:
         self.desc_text = text_widget
     
     def insert_definition_with_italic(self, text_widget, definition, bg_tag):
-        """插入定义文本，对特定字母应用斜体样式"""
-        import re
-        # 需要斜体的字母模式
-        pattern = r'\b([qaieQHDTJ])\b'
-        parts = re.split(pattern, definition)
+        """插入定义文本，使用数学斜体符号"""
+        # 字母替换为数学斜体符号
+        italic_map = {
+            'q': '𝑞', 'a': '𝑎', 'i': '𝑖', 'e': '𝑒',
+            'Q': '𝑄', 'H': '𝐻', 'D': '𝐷', 'T': '𝑇', 'J': '𝐽'
+        }
         
-        for j, part in enumerate(parts):
-            if j % 2 == 1 and part in 'qaieQHDTJ':
-                text_widget.insert(tk.END, part, ('italic', bg_tag))
-            else:
-                text_widget.insert(tk.END, part, ('definition', bg_tag))
+        result = definition
+        for normal, italic in italic_map.items():
+            result = result.replace(normal, italic)
+        
+        text_widget.insert(tk.END, result, ('definition', bg_tag))
     
     def create_about_tab(self):
         """创建关于页面"""

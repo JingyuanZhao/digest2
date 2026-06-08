@@ -398,17 +398,18 @@ class Digest2GUI:
         self.desc_text = text_widget
     
     def insert_definition_with_italic(self, text_widget, definition, bg_tag):
-        """Insert definition text, apply italic style to specific letters"""
-        import re
-        # Pattern for letters that need italics
-        pattern = r'\b([qaieQHDTJ])\b'
-        parts = re.split(pattern, definition)
+        """Insert definition text, use mathematical italic symbols"""
+        # Replace letters with mathematical italic symbols
+        italic_map = {
+            'q': '𝑞', 'a': '𝑎', 'i': '𝑖', 'e': '𝑒',
+            'Q': '𝑄', 'H': '𝐻', 'D': '𝐷', 'T': '𝑇', 'J': '𝐽'
+        }
         
-        for j, part in enumerate(parts):
-            if j % 2 == 1 and part in 'qaieQHDTJ':
-                text_widget.insert(tk.END, part, ('italic', bg_tag))
-            else:
-                text_widget.insert(tk.END, part, ('definition', bg_tag))
+        result = definition
+        for normal, italic in italic_map.items():
+            result = result.replace(normal, italic)
+        
+        text_widget.insert(tk.END, result, ('definition', bg_tag))
     
     def create_about_tab(self):
         """Create about tab"""
