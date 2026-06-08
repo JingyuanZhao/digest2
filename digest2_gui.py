@@ -36,7 +36,8 @@ def show_error_with_link(title, message, link_text=None, link_url=None):
     
     # 设置图标
     try:
-        dialog.iconbitmap(resource_path('digest2_icon.ico'))
+        icon_img = tk.PhotoImage(file=resource_path('digest2_icon_256.png'))
+        dialog.iconphoto(True, icon_img)
     except:
         pass
     
@@ -160,8 +161,9 @@ class Digest2GUI:
 
     def set_window_icon(self):
         try:
-            icon_path = resource_path('digest2_icon.ico')
-            self.root.iconbitmap(icon_path)
+            icon_path = resource_path('digest2_icon_256.png')
+            icon_img = tk.PhotoImage(file=icon_path)
+            self.root.iconphoto(True, icon_img)
         except Exception:
             pass
     

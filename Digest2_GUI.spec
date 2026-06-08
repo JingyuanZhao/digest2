@@ -5,6 +5,7 @@ from PyInstaller.utils.hooks import collect_data_files, collect_submodules
 # 收集所有digest2的文件
 datas = [
     ('digest2_icon.ico', '.'),
+    ('digest2_icon_256.png', '.'),
 ]
 datas += collect_data_files('digest2', include_py_files=True)
 
@@ -44,7 +45,7 @@ a = Analysis(
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
-    excludes=[],
+    excludes=['PyQt5', 'PySide6', 'PySide2', 'matplotlib', 'pytest', 'sphinx', 'IPython', 'pandas', 'scipy'],
     noarchive=False,
     optimize=0,
 )
