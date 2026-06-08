@@ -349,7 +349,7 @@ class Digest2GUI:
         text_widget.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         
         # 设置制表符宽度，确保列对齐
-        text_widget.config(tabs=('2c', '12c', '18c'))
+        text_widget.config(tabs=('3c', '8c', '8c'))
         
         # 配置标签样式
         text_widget.tag_config('header', font=('微软雅黑', 10, 'bold'), background='#f5f5f5')
