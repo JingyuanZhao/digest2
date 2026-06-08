@@ -136,11 +136,13 @@ class Digest2GUI:
         style = ttk.Style()
         style.configure('TNotebook.Tab', width=10, anchor='center')
         
-        # 分析结果表格样式（表头不加粗）
+        # 分析结果表格样式（表头加粗，字体大小与内容一致）
+        style.configure('ResultTreeview.Treeview',
+                       font=('微软雅黑', 10))
         style.configure('ResultTreeview.Treeview.Heading', 
                        background='#f5f5f5', 
                        foreground='#333333',
-                       font=('微软雅黑', 11))
+                       font=('微软雅黑', 10, 'bold'))
         self.notebook = ttk.Notebook(main_frame)
         self.notebook.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
         
