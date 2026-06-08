@@ -214,7 +214,7 @@ class Digest2GUI:
             wrap=tk.NONE,
             width=80,
             height=8,
-            font=('Segoe UI', 11)
+            font=('Segoe UI', 10)
         )
         self.input_text.grid(row=1, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
         # Add right-click menu for input text
@@ -336,7 +336,7 @@ class Digest2GUI:
         text_frame.pack(fill=tk.BOTH, expand=True)
         
         # Create Text widget
-        text_widget = tk.Text(text_frame, wrap=tk.WORD, font=('Segoe UI', 10), 
+        text_widget = tk.Text(text_frame, wrap=tk.WORD, font=('Segoe UI', 11), 
                              bg='#ffffff', relief='flat', spacing1=6, spacing2=4, spacing3=6,
                              borderwidth=0, highlightthickness=0)
         text_widget.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
@@ -345,11 +345,11 @@ class Digest2GUI:
         text_widget.config(tabs=('2c', '9c'))
         
         # Configure tag styles
-        text_widget.tag_config('header', font=('Segoe UI', 10, 'bold'), background='#f5f5f5')
-        text_widget.tag_config('abbrev', font=('Segoe UI', 10))
-        text_widget.tag_config('fullname', font=('Segoe UI', 10))
-        text_widget.tag_config('definition', font=('Segoe UI', 10))
-        text_widget.tag_config('italic', font=('Segoe UI', 10, 'italic'))
+        text_widget.tag_config('header', font=('Segoe UI', 11, 'bold'), background='#f5f5f5')
+        text_widget.tag_config('abbrev', font=('Segoe UI', 11))
+        text_widget.tag_config('fullname', font=('Segoe UI', 11))
+        text_widget.tag_config('definition', font=('Segoe UI', 11))
+        text_widget.tag_config('italic', font=('Segoe UI', 11, 'italic'))
         text_widget.tag_config('row_bg1', background='#ffffff')
         text_widget.tag_config('row_bg2', background='#f9f9f9')
         
@@ -434,7 +434,7 @@ class Digest2GUI:
         
         # Add disclaimer information (merge copyright and disclaimer) - use Text widget to ensure proper wrapping
         about_text_widget = tk.Text(content_frame, wrap=tk.WORD, height=2, 
-                                  font=('Segoe UI', 11), bg='#f5f5f5', relief='flat',
+                                  font=('Segoe UI', 10), bg='#f5f5f5', relief='flat',
                                   foreground='#333', spacing1=3, spacing2=2, spacing3=3,
                                   borderwidth=0, highlightthickness=0)
         about_text_widget.pack(fill=tk.X, anchor=tk.W, pady=(0, 15))
