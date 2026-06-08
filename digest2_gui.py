@@ -144,8 +144,8 @@ class Digest2GUI:
                        foreground='#333333',
                        font=('微软雅黑', 10))
         style.map('ResultTreeview.Treeview',
-                  foreground=[('selected', '#ffffff')],
-                  background=[('selected', '#3f51b5'), ('active', '#f0f0f0')])
+                  foreground=[('selected', '#333333')],
+                  background=[('selected', '#e8f0fe'), ('active', '#f0f0f0')])
         self.notebook = ttk.Notebook(main_frame)
         self.notebook.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
         
