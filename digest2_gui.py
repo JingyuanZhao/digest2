@@ -484,8 +484,8 @@ class Digest2GUI:
         web_text_label.pack(side=tk.LEFT)
         
         web_link_label = tk.Label(web_label_container, text="https://asterorbit-digest2.hf.space/", 
-                                  font=('微软雅黑', 10), fg='#1a73e8', cursor='hand2', 
-                                  bg='#f5f5f5', underline=True)
+                                  font=('微软雅黑', 10, 'underline'), fg='#1a73e8', cursor='hand2', 
+                                  bg='#f5f5f5')
         web_link_label.pack(side=tk.LEFT)
         
         def open_web_link(event):
