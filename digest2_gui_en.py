@@ -143,7 +143,8 @@ class Digest2GUI:
         
         # Create orbit types table style (same font as result table)
         style.configure('DescTreeview.Treeview',
-                       font=('Segoe UI', 12))
+                       font=('Segoe UI', 12),
+                       rowheight=30)
         style.configure('DescTreeview.Treeview.Heading', 
                        background='#f5f5f5', 
                        foreground='#333333',
