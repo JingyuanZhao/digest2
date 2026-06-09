@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>类型说明 - Asterorbit 小行星轨道分类评估工具</title>
     <link rel="icon" type="image/svg+xml" href="/static/digest2_icon.svg">
+    <!-- MathJax for math formulas -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
     <style>
         * {
             margin: 0;
@@ -344,7 +354,7 @@
                         <td>MB1</td>
                         <td>Inner Main Belt</td>
                         <td>内主带</td>
-                        <td>𝑞 &gt; 1.67 AU，2.1 AU &lt; 𝑎 &lt; 2.5 AU，𝑖 &lt; ((a-2.1)/0.4)*10+7</td>
+                        <td>𝑞 &gt; 1.67 AU，2.1 AU &lt; 𝑎 &lt; 2.5 AU，\(i &lt; \frac{a-2.1}{0.4} \times 10 + 7\)</td>
                     </tr>
                     <tr>
                         <td>Pal</td>
@@ -368,7 +378,7 @@
                         <td>MB3</td>
                         <td>Outer Main Belt</td>
                         <td>外主带</td>
-                        <td>2.8 AU &lt; 𝑎 &lt; 3.25 AU，𝑒 &lt; 0.4，𝑖 &lt; ((a-2.8)/0.45)*16+20</td>
+                        <td>2.8 AU &lt; 𝑎 &lt; 3.25 AU，𝑒 &lt; 0.4，\(i &lt; \frac{a-2.8}{0.45} \times 16 + 20\)</td>
                     </tr>
                     <tr>
                         <td>Hil</td>
