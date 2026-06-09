@@ -504,7 +504,7 @@ class Digest2GUI:
         
         info_text = tk.Text(content_frame, wrap=tk.WORD, height=4, 
                             font=('Segoe UI', 10), bg='#f5f5f5', relief='flat',
-                            foreground='#666', spacing1=0, spacing2=5, spacing3=0,
+                            foreground='#666', spacing1=0, spacing2=10, spacing3=0,
                             borderwidth=0, highlightthickness=0,
                             insertwidth=0)
         info_text.pack(anchor=tk.W, pady=(0, 20))
