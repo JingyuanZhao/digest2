@@ -381,22 +381,30 @@ class Digest2GUI:
         ]
         
         # 添加表头
-        text_widget.insert(tk.END, '  缩写\t', ('header', 'row_bg1'))
-        text_widget.insert(tk.END, '英文全称\t', ('header', 'row_bg1'))
-        text_widget.insert(tk.END, '中文含义\t', ('header', 'row_bg1'))
-        text_widget.insert(tk.END, 'Digest2定义\n', ('header', 'row_bg1'))
+        text_widget.insert(tk.END, '  缩写\t', 'header')
+        text_widget.insert(tk.END, '英文全称\t', 'header')
+        text_widget.insert(tk.END, '中文含义\t', 'header')
+        text_widget.insert(tk.END, 'Digest2定义\n', 'header')
+        
+        # 给表头添加背景色
+        text_widget.tag_add('row_bg1', '1.0', '2.0')
+        text_widget.tag_add('header', '1.0', '2.0')
         
         # 添加数据行
         for i, (abbrev, fullname, chinese, definition) in enumerate(orbit_types):
             bg_tag = 'row_bg1' if i % 2 == 0 else 'row_bg2'
+            line_start = text_widget.index(tk.END)
             
-            text_widget.insert(tk.END, f'  {abbrev}\t', ('abbrev', bg_tag))
-            text_widget.insert(tk.END, f'{fullname}\t', ('fullname', bg_tag))
-            text_widget.insert(tk.END, f'{chinese}\t', ('chinese', bg_tag))
+            text_widget.insert(tk.END, f'  {abbrev}\t', 'abbrev')
+            text_widget.insert(tk.END, f'{fullname}\t', 'fullname')
+            text_widget.insert(tk.END, f'{chinese}\t', 'chinese')
             
             # 插入定义并标记需要斜体的部分
-            self.insert_definition_with_italic(text_widget, definition, bg_tag)
+            self.insert_definition_with_italic(text_widget, definition, None)
             text_widget.insert(tk.END, '\n')
+            
+            # 给整行添加背景色
+            text_widget.tag_add(bg_tag, line_start, tk.END)
         
         text_widget.config(state=tk.DISABLED)
         
@@ -422,7 +430,7 @@ class Digest2GUI:
             # 使用正则表达式只替换单独出现的字母（单词边界）
             result = re.sub(r'\b' + re.escape(normal) + r'\b', italic, result)
         
-        text_widget.insert(tk.END, result, ('definition', bg_tag))
+        text_widget.insert(tk.END, result, 'definition')
     
     def create_about_tab(self):
         """创建关于页面"""

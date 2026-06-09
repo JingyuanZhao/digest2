@@ -373,20 +373,28 @@ class Digest2GUI:
         ]
         
         # Add header
-        text_widget.insert(tk.END, '  Abbr\t', ('header', 'row_bg1'))
-        text_widget.insert(tk.END, 'Full Name\t', ('header', 'row_bg1'))
-        text_widget.insert(tk.END, 'Digest2 Definition\n', ('header', 'row_bg1'))
+        text_widget.insert(tk.END, '  Abbr\t', 'header')
+        text_widget.insert(tk.END, 'Full Name\t', 'header')
+        text_widget.insert(tk.END, 'Digest2 Definition\n', 'header')
+        
+        # Give header background color
+        text_widget.tag_add('row_bg1', '1.0', '2.0')
+        text_widget.tag_add('header', '1.0', '2.0')
         
         # Add data rows
         for i, (abbrev, fullname, definition) in enumerate(orbit_types):
             bg_tag = 'row_bg1' if i % 2 == 0 else 'row_bg2'
+            line_start = text_widget.index(tk.END)
             
-            text_widget.insert(tk.END, f'  {abbrev}\t', ('abbrev', bg_tag))
-            text_widget.insert(tk.END, f'{fullname}\t', ('fullname', bg_tag))
+            text_widget.insert(tk.END, f'  {abbrev}\t', 'abbrev')
+            text_widget.insert(tk.END, f'{fullname}\t', 'fullname')
             
             # Insert definition and mark italic parts
-            self.insert_definition_with_italic(text_widget, definition, bg_tag)
+            self.insert_definition_with_italic(text_widget, definition, None)
             text_widget.insert(tk.END, '\n')
+            
+            # Give whole line background color
+            text_widget.tag_add(bg_tag, line_start, tk.END)
         
         text_widget.config(state=tk.DISABLED)
         
@@ -412,7 +420,7 @@ class Digest2GUI:
             # Use regex to only replace standalone letters (word boundaries)
             result = re.sub(r'\b' + re.escape(normal) + r'\b', italic, result)
         
-        text_widget.insert(tk.END, result, ('definition', bg_tag))
+        text_widget.insert(tk.END, result, 'definition')
     
     def create_about_tab(self):
         """Create about tab"""
