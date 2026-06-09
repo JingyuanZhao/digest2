@@ -605,8 +605,16 @@ class Digest2GUI:
             try:
                 sel_start = ref_text_widget.index(tk.SEL_FIRST)
                 sel_end = ref_text_widget.index(tk.SEL_LAST)
-                # 为选中区域内的链接添加选中样式
-                ref_text_widget.tag_add('link_sel', sel_start, sel_end)
+                # 只为选中区域内的链接添加选中样式
+                # 遍历所有链接范围，只选中与选择区域重叠的部分
+                for link_start, link_end in zip(
+                    ref_text_widget.tag_ranges('link')[0::2],
+                    ref_text_widget.tag_ranges('link')[1::2]
+                ):
+                    # 检查链接范围是否与选择区域重叠
+                    if ref_text_widget.compare(link_start, '<', sel_end) and \
+                       ref_text_widget.compare(link_end, '>', sel_start):
+                        ref_text_widget.tag_add('link_sel', link_start, link_end)
             except tk.TclError:
                 pass  # 没有选中的文本
         
