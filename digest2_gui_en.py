@@ -488,7 +488,7 @@ class Digest2GUI:
                                   borderwidth=0, highlightthickness=0,
                                   insertwidth=0)
         about_text_widget.pack(fill=tk.X, anchor=tk.W, pady=(0, 15))
-        about_text_widget.insert(tk.END, "This application is built by Jingyuan Zhao based on the official open source Digest2 code from the Minor Planet Center, and is not an official MPC project. Digest2 source code authors: Sonia Keys, Carl Hergenrother, Robert McNaught, David Asher, with ADES support added by Richard Cloete and Peter Vereš.")
+        about_text_widget.insert(tk.END, "This application is built by Jingyuan Zhao based on the official open source Digest2 code from the Minor Planet Center (MPC), and is not an official MPC project. Digest2 source code authors: Sonia Keys, Carl Hergenrother, Robert McNaught, David Asher, with ADES support added by Richard Cloete and Peter Vereš.")
         
         # Add right-click menu for about_text_widget
         about_text_widget.bind('<Button-3>', lambda e: self.show_about_context_menu(e, about_text_widget))
