@@ -497,7 +497,9 @@ class Digest2GUI:
                                   borderwidth=0, highlightthickness=0)
         about_text_widget.pack(fill=tk.X, anchor=tk.W, pady=(0, 15))
         about_text_widget.insert(tk.END, "本应用由赵经远基于小行星中心（MPC）官方开源的Digest2源代码构建，非MPC官方项目。Digest2源代码作者：Sonia Keys、Carl Hergenrother、Robert McNaught、David Asher，源代码中的ADES支持由 Richard Cloete 和 Peter Vereš添加。")
-        about_text_widget.config(state=tk.DISABLED)
+        
+        # 为about_text_widget添加右键菜单
+        about_text_widget.bind('<Button-3>', lambda e: self.show_about_context_menu(e, about_text_widget))
         
         # 添加支持的数据格式
         data_format_label = ttk.Label(content_frame, text="支持的数据格式：MPC 80列、ADES XML、ADES PSV", 
@@ -621,7 +623,9 @@ class Digest2GUI:
         ref_text_widget.tag_bind('link', '<Button-1>', open_link)
         ref_text_widget.bind('<Motion>', on_mouse_move)
         ref_text_widget.bind('<<Selection>>', on_select)
-        ref_text_widget.config(state=tk.DISABLED)
+        
+        # 为ref_text_widget添加右键菜单
+        ref_text_widget.bind('<Button-3>', lambda e: self.show_about_context_menu(e, ref_text_widget))
         
         # 配置样式
         style = ttk.Style()
@@ -1774,6 +1778,34 @@ class Digest2GUI:
         self.input_text.tag_add(tk.SEL, "1.0", tk.END)
         self.input_text.mark_set(tk.INSERT, "1.0")
         self.input_text.see(tk.INSERT)
+    
+    def show_about_context_menu(self, event, widget):
+        """显示关于页面文本控件的右键菜单"""
+        # 创建右键菜单
+        context_menu = tk.Menu(self.root, tearoff=0)
+        context_menu.add_command(label="复制", command=lambda: self.copy_about_text(widget))
+        context_menu.add_command(label="全选", command=lambda: self.select_all_about_text(widget))
+        
+        # 在鼠标位置显示菜单
+        context_menu.tk_popup(event.x_root, event.y_root)
+    
+    def copy_about_text(self, widget):
+        """复制选中的文本到剪贴板"""
+        try:
+            selected_text = widget.get(tk.SEL_FIRST, tk.SEL_LAST)
+            if selected_text:
+                self.root.clipboard_clear()
+                self.root.clipboard_append(selected_text)
+                self.status_var.set("已复制")
+        except tk.TclError:
+            pass  # 没有选中的文本
+    
+    def select_all_about_text(self, widget):
+        """全选文本"""
+        widget.focus_set()
+        widget.tag_add(tk.SEL, "1.0", tk.END)
+        widget.mark_set(tk.INSERT, "1.0")
+        widget.see(tk.INSERT)
 
     def show_tree_context_menu(self, event):
         """显示树形视图的右键菜单"""

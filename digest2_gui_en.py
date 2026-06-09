@@ -488,7 +488,9 @@ class Digest2GUI:
                                   borderwidth=0, highlightthickness=0)
         about_text_widget.pack(fill=tk.X, anchor=tk.W, pady=(0, 15))
         about_text_widget.insert(tk.END, "This application is built by Jingyuan Zhao based on the official open source Digest2 code from the Minor Planet Center, and is not an official MPC project. Digest2 source code authors: Sonia Keys, Carl Hergenrother, Robert McNaught, David Asher, with ADES support added by Richard Cloete and Peter Vereš.")
-        about_text_widget.config(state=tk.DISABLED)
+        
+        # Add right-click menu for about_text_widget
+        about_text_widget.bind('<Button-3>', lambda e: self.show_about_context_menu(e, about_text_widget))
         
         # Add supported data formats
         data_format_label = ttk.Label(content_frame, text="Supported data formats: MPC 80-column, ADES XML, ADES PSV", 
@@ -612,7 +614,9 @@ class Digest2GUI:
         ref_text_widget.tag_bind('link', '<Button-1>', open_link)
         ref_text_widget.bind('<Motion>', on_mouse_move)
         ref_text_widget.bind('<<Selection>>', on_select)
-        ref_text_widget.config(state=tk.DISABLED)
+        
+        # Add right-click menu for ref_text_widget
+        ref_text_widget.bind('<Button-3>', lambda e: self.show_about_context_menu(e, ref_text_widget))
         
         # Configure styles
         style = ttk.Style()
@@ -1765,6 +1769,34 @@ class Digest2GUI:
         self.input_text.tag_add(tk.SEL, "1.0", tk.END)
         self.input_text.mark_set(tk.INSERT, "1.0")
         self.input_text.see(tk.INSERT)
+    
+    def show_about_context_menu(self, event, widget):
+        """Show right-click menu for about page text widgets"""
+        # Create right-click menu
+        context_menu = tk.Menu(self.root, tearoff=0)
+        context_menu.add_command(label="Copy", command=lambda: self.copy_about_text(widget))
+        context_menu.add_command(label="Select All", command=lambda: self.select_all_about_text(widget))
+        
+        # Show menu at mouse position
+        context_menu.tk_popup(event.x_root, event.y_root)
+    
+    def copy_about_text(self, widget):
+        """Copy selected text to clipboard"""
+        try:
+            selected_text = widget.get(tk.SEL_FIRST, tk.SEL_LAST)
+            if selected_text:
+                self.root.clipboard_clear()
+                self.root.clipboard_append(selected_text)
+                self.status_var.set("Copied")
+        except tk.TclError:
+            pass  # No selected text
+    
+    def select_all_about_text(self, widget):
+        """Select all text"""
+        widget.focus_set()
+        widget.tag_add(tk.SEL, "1.0", tk.END)
+        widget.mark_set(tk.INSERT, "1.0")
+        widget.see(tk.INSERT)
 
     def show_tree_context_menu(self, event):
         """Show right-click menu for tree view"""
