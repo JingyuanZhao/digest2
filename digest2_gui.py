@@ -401,7 +401,7 @@ class Digest2GUI:
         
         # 添加数据行
         for i, (abbrev, fullname, chinese, definition) in enumerate(orbit_types):
-            bg_tag = 'row_bg1' if i % 2 == 0 else 'row_bg2'
+            bg_tag = 'row_bg2' if i % 2 == 0 else 'row_bg1'
             self.desc_tree.insert('', tk.END, values=(abbrev, fullname, chinese, definition), tags=(bg_tag,))
         
         # 滚动条
