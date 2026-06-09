@@ -411,7 +411,7 @@ class Digest2GUI:
         scrollbar_x.grid(row=1, column=0, sticky=(tk.W, tk.E))
         
         # 绑定点击事件到类型说明表格
-        self.desc_tree.bind('&lt;Button-1&gt;', self.on_desc_tree_click)
+        self.desc_tree.bind('<Button-1>', self.on_desc_tree_click)
         
         tree_frame.columnconfigure(0, weight=1)
         tree_frame.rowconfigure(0, weight=1)
@@ -606,8 +606,8 @@ class Digest2GUI:
             return
         
         # 获取修饰键状态
-        ctrl_pressed = (event.state &amp; 0x4) != 0  # Ctrl键
-        shift_pressed = (event.state &amp; 0x1) != 0  # Shift键
+        ctrl_pressed = (event.state & 0x4) != 0  # Ctrl键
+        shift_pressed = (event.state & 0x1) != 0  # Shift键
         
         if ctrl_pressed:
             # Ctrl+单击：切换单个选中状态

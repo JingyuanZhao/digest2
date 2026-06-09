@@ -401,7 +401,7 @@ class Digest2GUI:
         scrollbar_x.grid(row=1, column=0, sticky=(tk.W, tk.E))
         
         # Bind click event to description tree
-        self.desc_tree.bind('&lt;Button-1&gt;', self.on_desc_tree_click)
+        self.desc_tree.bind('<Button-1>', self.on_desc_tree_click)
         
         tree_frame.columnconfigure(0, weight=1)
         tree_frame.rowconfigure(0, weight=1)
@@ -596,8 +596,8 @@ class Digest2GUI:
             return
         
         # Get modifier key states
-        ctrl_pressed = (event.state &amp; 0x4) != 0  # Ctrl key
-        shift_pressed = (event.state &amp; 0x1) != 0  # Shift key
+        ctrl_pressed = (event.state & 0x4) != 0  # Ctrl key
+        shift_pressed = (event.state & 0x1) != 0  # Shift key
         
         if ctrl_pressed:
             # Ctrl+Click: toggle individual selection
