@@ -411,9 +411,9 @@ class Digest2GUI:
         scrollbar_x.grid(row=1, column=0, sticky=(tk.W, tk.E))
         
         # 绑定点击事件到类型说明表格
-        self.desc_tree.bind('&lt;Button-1&gt;', self.on_desc_tree_click)
+        self.desc_tree.bind('<Button-1>', self.on_desc_tree_click)
         # 绑定右键菜单到类型说明表格
-        self.desc_tree.bind('&lt;Button-3&gt;', self.show_desc_tree_context_menu)
+        self.desc_tree.bind('<Button-3>', self.show_desc_tree_context_menu)
         
         tree_frame.columnconfigure(0, weight=1)
         tree_frame.rowconfigure(0, weight=1)
