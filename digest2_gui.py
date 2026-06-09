@@ -375,9 +375,9 @@ class Digest2GUI:
         
         # 设置列宽
         self.desc_tree.column('abbrev', width=30, minwidth=30)
-        self.desc_tree.column('fullname', width=260, minwidth=200)
+        self.desc_tree.column('fullname', width=270, minwidth=200)
         self.desc_tree.column('chinese', width=150, minwidth=100)
-        self.desc_tree.column('definition', width=590, minwidth=300)
+        self.desc_tree.column('definition', width=580, minwidth=300)
         
         # 轨道类型说明（使用 Digest2 官方定义及标准天文学参数）
         orbit_types = [
