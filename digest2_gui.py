@@ -383,7 +383,7 @@ class Digest2GUI:
         orbit_types = [
             ('Int', 'MPC Interesting', 'MPC关注天体', '满足以下任一条件：𝑞 < 1.3 AU，𝑄 > 10 AU，𝑒 ≥ 0.5，𝑖 ≥ 40°'),
             ('NEO', 'Near-Earth Object', '近地天体', '𝑞 < 1.3 AU'),
-            ('N22', 'Intermediate-size Near-Earth Object', '中等大小近地天体', '𝐷 > 140 m。𝑞 < 1.3 AU，𝐻 < 22.5'),
+            ('N22', 'Intermediate-size NEO', '中等大小近地天体', '𝐷 > 140 m。𝑞 < 1.3 AU，𝐻 < 22.5'),
             ('N18', 'Large Near-Earth Object', '大型近地天体', '𝐷 > 1.2 km。𝑞 < 1.3 AU，𝐻 < 18.5'),
             ('MC', 'Mars Crosser', '越火小天体', '穿越火星轨道。1.3 AU < 𝑞 < 1.67 AU，𝑄 > 1.58 AU'),
             ('Hun', 'Hungaria Group', '匈牙利群', '以434号小行星匈牙利星为代表的小行星群。1.78 AU < 𝑎 < 2 AU，𝑒 < 0.18，16° < 𝑖 < 34°'),
