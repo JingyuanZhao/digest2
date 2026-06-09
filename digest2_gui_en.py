@@ -402,6 +402,7 @@ class Digest2GUI:
         import re
         # Replace letters with mathematical italic symbols - only when they are standalone
         italic_map = {
+            'TJ': '𝑇𝐽',
             'q': '𝑞', 'a': '𝑎', 'i': '𝑖', 'e': '𝑒',
             'Q': '𝑄', 'H': '𝐻', 'D': '𝐷', 'T': '𝑇', 'J': '𝐽'
         }
